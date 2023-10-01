@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} Choose Manga {% endblock %}
+
+{% block content %}
+    <!-- Display flash messages here -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-success message-alert">
+                    <ul>
+                        {% for message in messages %}
+                            <li><b>{{ message }}</b></li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ url_for('search_manga') }}" class="btn submit-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left mb-1" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                        </svg>
+                        Go Back Home
+                    </a>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <form action = "{{ url_for('choose_manga') }}" method = "POST">
+        {{ form.hidden_tag() }}
+        <div class="container choose-manga-container mt-4 mb-5">
+            <div class="d-flex flex-column align-items-center">
+              {% for data in extracted_data %}
+                    <div class="col-md-7 mb-4">
+                        <div class="card shadow border-4 d-flex flex-row">
+                            <img src="{{ data['image_src'] }}" class="card-img" alt="">
+                              <div class="card-body">
+                                  <h1 class="card-title">{% if data['title']|length > 20 %}
+                                        {{ data['title'][:20] }}...
+                                    {% else %}
+                                        {{ data['title'] }}
+                                    {% endif %}
+                                  </h1>
+                                  <p class="card-text">{{ data['author'] }}</p>
+                                  <p class="card-text">{{ data['view_count'] }}</p>
+                                  {{ form.title(value = data['title'], type="hidden") }}
+                                  {{ form.submit(class="btn submit-btn") }}
+                              </div>
+                        </div>
+                    </div>
+              {% endfor %}
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+

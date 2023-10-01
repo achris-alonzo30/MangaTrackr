@@ -1,0 +1,108 @@
+* {
+    font-size: 16px;
+}
+
+/* ******************************* Search Manga ******************************* */
+header {
+    background-color: #4A4E69;
+    font-family: 'Black Ops One', cursive;
+    font-size: 2rem;
+}
+
+.background-wallpaper {
+    background-image: url('/static/images/gojo-wallpaper.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.card {
+    background-color: #C9ADA7;
+    font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #4A4E69;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.submit-btn {
+    background-color: #4A4E69;
+    color: #F2E9E4;
+}
+
+.submit-btn:hover {
+    background-color: #9A8C98;
+    color: #22223B;
+}
+
+.website-title,
+footer p {
+    color: #F2E9E4;
+}
+
+/* ******************************* Choose Manga ******************************* */
+.choose-manga-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.card-img {
+    height: 100%;
+    width: 20%;
+    margin: 0 auto;
+    display: block;
+}
+
+.card-title {
+    font-family: 'Black Ops One', cursive;
+    color: #22223B;
+    font-size: 3rem;
+    white-space: nowrap;
+}
+
+.card-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #F2E9E4;
+}
+
+.message-alert {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #22223B;
+}
+
+/* *********************** Loader CSS Style *********************** */
+.loader-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    border: 4px solid #F2E9E4;
+    border-top: 4px solid #4A4E69;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Search Manga {% endblock %}
+
+{% block content %}
+    <main class="background-wallpaper py-5 img-fluid">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="card shadow w-50">
+                    <div class="card-body">
+                        <h2 class="card-title">Search for Manga</h2>
+                        <form action="{{ url_for('search_manga') }}" method="POST">
+                            {{ form.hidden_tag() }}
+                            {{ form.search_manga_title(placeholder = form.search_manga_title.label.text, class = "form-control") }}
+                            <div onClick="showLoader()">
+                                {{ form.submit(class="btn submit-btn mt-3") }}
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="loader-container" id="loaderContainer">
+        <div class="loader"></div>
+    </div>
+    {% block scripts %}
+        <script>
+            // for loader animation
+            function showLoader() {
+                document.getElementById("loaderContainer").style.display = "flex";
+                setTimeout(hideLoader, 5000); // Simulate a task taking 3 seconds
+            }
+
+            function hideLoader() {
+                document.getElementById("loaderContainer").style.display = "none";
+            }
+
+        </script>
+    {% endblock %}
+{% endblock %}
+
